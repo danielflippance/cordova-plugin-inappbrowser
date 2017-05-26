@@ -52,6 +52,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+//SCHOLANTIS
+import android.widget.Button;
+//END SCHOLANTIS
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.Config;
 import org.apache.cordova.CordovaArgs;
@@ -700,23 +704,39 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // Close/Done button
-                ImageButton close = new ImageButton(cordova.getActivity());
+                //SCHOLANTIS
+                //ImageButton close = new ImageButton(cordova.getActivity());
+                Button close = new Button(cordova.getActivity());
+                //END SCHOLANTIS
+
                 RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
                 closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 close.setLayoutParams(closeLayoutParams);
                 close.setContentDescription("Close Button");
                 close.setId(Integer.valueOf(5));
-                int closeResId = activityRes.getIdentifier("ic_action_remove", "drawable", cordova.getActivity().getPackageName());
-                Drawable closeIcon = activityRes.getDrawable(closeResId);
+
+                //SCHOLANTIS
+                //int closeResId = activityRes.getIdentifier("ic_action_remove", "drawable", cordova.getActivity().getPackageName());
+                //Drawable closeIcon = activityRes.getDrawable(closeResId);
+                //END SCHOLANTIS 
+
                 if (Build.VERSION.SDK_INT >= 16)
                     close.setBackground(null);
                 else
                     close.setBackgroundDrawable(null);
-                close.setImageDrawable(closeIcon);
-                close.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
+                //SCHOLANTIS
+                //close.setImageDrawable(closeIcon);
+                close.setText("< Choose District");
+                //close.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                //END SCHOLANTIS
+
                 back.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
                 if (Build.VERSION.SDK_INT >= 16)
-                    close.getAdjustViewBounds();
+                    
+                    //SCHOLANTIS
+                    //close.getAdjustViewBounds();
+                    //END SCHOLANTIS
 
                 close.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
